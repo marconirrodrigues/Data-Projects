@@ -27,9 +27,3 @@ O módulo também contém uma função principal que cria uma instância do `New
 Este módulo contém a classe `FinanceDataFetcher`, que é usada para buscar dados financeiros do Yahoo Finance. A classe usa o pacote `yfinance` para buscar dados financeiros de um determinado ativo financeiro.
 
 O módulo também contém uma função principal que cria uma instância do `FinanceDataFetcher`, baixa dados financeiros e insere esses dados no banco de dados.
-
-## Segurança de Dados
-
-As chaves da API e as credenciais do banco de dados são carregadas a partir de variáveis de ambiente para evitar a exposição de dados sensíveis. Recomenda-se que essas chaves e credenciais sejam armazenadas de forma segura e nunca incluídas diretamente no código.
-
-Os IDs únicos para os registros no banco de dados são criados a partir de um hash SHA-256 dos dados relevantes. Isso aj
