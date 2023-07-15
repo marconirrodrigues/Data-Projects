@@ -18,19 +18,38 @@ INSERT INTO sor_newsapi (id_newsapi, source_name, author, title, description, ur
 VALUES (%s, %s, %s, %s, %s, %s, %s)
 """
 
-select_record_by_id = """
+select_record_by_id_newsapi = """
 SELECT 1 FROM sor_newsapi WHERE id_newsapi = %s;
 """
 
 def record_exists(cursor, id_newsapi):
-    cursor.execute(select_record_by_id, (id_newsapi,))
+    cursor.execute(select_record_by_id_newsapi, (id_newsapi,))
     return bool(cursor.fetchone())
 
 
-'''# queries yahoo_finance
+# queries yahoo_finance
 create_table_yahoo_finance = """
-CREATE TABLE sor_yahoo_finance (
-    id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS sor_yahoo_finance (
+    id_yahoo_finance TEXT PRIMARY KEY,
+    Datetime TIMESTAMP,
+    Open NUMERIC(15,6),
+    High NUMERIC(15,6),
+    Low NUMERIC(15,6),
+    Close NUMERIC(15,6),
+    Adj_Close NUMERIC(15,6),
+    Volume NUMERIC(15)
+)
+"""
 
+insert_into_yahoo_finance = """
+INSERT INTO sor_yahoo_finance (id_yahoo_finance, Datetime, Open, High, Low, Close, Adj_Close, Volume)
+VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+"""
 
-)'''
+select_record_by_id_yahoo_finance = """
+SELECT 1 FROM sor_yahoo_finance WHERE id_yahoo_finance = %s;
+"""
+
+def record_exists(cursor, id_yahoo_finance):
+    cursor.execute(select_record_by_id_yahoo_finance, (id_yahoo_finance,))
+    return bool(cursor.fetchone())
