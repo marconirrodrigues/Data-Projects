@@ -1,0 +1,4 @@
+flask==2.0.1
+pandas==1.5.2
+psycopg2-binary==2.9.6
+yfinance==0.2.3
