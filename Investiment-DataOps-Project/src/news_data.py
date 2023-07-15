@@ -70,6 +70,8 @@ def main():
     keyword = 'Apple'  # define a palavra-chave para a busca
     data = newsapi.get_news(keyword, 7)  # busca notícias dos últimos 7 dias com a palavra-chave
 
+    print("\nVerificando a tabela 'sor_newsapi'\n")
+
     db.create_table(queries.create_table_newsapi)
 
     # insere os dados recuperados no banco de dados
@@ -87,7 +89,7 @@ def main():
             id_newsapi = calculate_hash(source, title, author, published_at)
 
             # Verifica se o registro já existe antes de inserir
-            if not queries.record_exists(db.cursor, id_newsapi):
+            if not queries.record_exists_news(db.cursor, id_newsapi):
                 data_base = (source, author, title, description, url, published_at)
                 db.insert_data(queries.insert_into_table_newsapi, (id_newsapi,) + data_base)
                 print(f"{id_newsapi} adicionados com sucesso!")
@@ -97,6 +99,3 @@ def main():
         print("Erro ao buscar notícias")
 
     db.close()
-
-if __name__ == "__main__":
-    main()  # Executa a função principal quando o script é executado diretamente

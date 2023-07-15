@@ -46,10 +46,13 @@ def main():
     # Baixa os dados financeiros e os imprime.
     data = fetcher.download_data()
     
+    print("\nVerificando a tabela 'sor_yahoo_finance'\n")
+
     db.create_table(queries.create_table_yahoo_finance)
 
     # insere os dados recuperados no banco de dados
     if not data.empty:
+        print(f'')
         for datetime, row in data.iterrows():  # Observe a mudança aqui
             open = row['Open']
             high = row['High']
@@ -62,7 +65,7 @@ def main():
             id_yahoo_finance = calculate_hash(datetime, close, volume)
 
             # Verifica se o registro já existe antes de inserir
-            if not queries.record_exists(db.cursor, id_yahoo_finance):
+            if not queries.record_exists_yahoo_finance(db.cursor, id_yahoo_finance):
                 data_base = (datetime, open, high, low, close, adj_close, volume)
                 db.insert_data(queries.insert_into_yahoo_finance, (id_yahoo_finance,) + data_base)
                 print(f"{id_yahoo_finance} adicionados com sucesso!")
@@ -73,6 +76,4 @@ def main():
 
     db.close()
 
-if __name__ == "__main__":
-    main()
 

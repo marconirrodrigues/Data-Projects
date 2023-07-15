@@ -22,7 +22,7 @@ select_record_by_id_newsapi = """
 SELECT 1 FROM sor_newsapi WHERE id_newsapi = %s;
 """
 
-def record_exists(cursor, id_newsapi):
+def record_exists_news(cursor, id_newsapi):
     cursor.execute(select_record_by_id_newsapi, (id_newsapi,))
     return bool(cursor.fetchone())
 
@@ -50,6 +50,6 @@ select_record_by_id_yahoo_finance = """
 SELECT 1 FROM sor_yahoo_finance WHERE id_yahoo_finance = %s;
 """
 
-def record_exists(cursor, id_yahoo_finance):
+def record_exists_yahoo_finance(cursor, id_yahoo_finance):
     cursor.execute(select_record_by_id_yahoo_finance, (id_yahoo_finance,))
     return bool(cursor.fetchone())
