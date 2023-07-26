@@ -1,9 +1,9 @@
 import os
-import queries
-from database_manager import DatabaseManager
-from hashing import calculate_hash
-from news_data import NewsAPI
-from yahoo_finance_data import FinanceDataFetcher
+import src.queries as queries
+from src.database_manager import DatabaseManager
+from src.hashing import calculate_hash
+from src.news_data import NewsAPI
+from src.yahoo_finance_data import FinanceDataFetcher
 from dotenv import load_dotenv
 
 load_dotenv()  # Carrega variáveis de ambiente do arquivo .env

@@ -19,3 +19,9 @@ class DatabaseManager:
 
     def close(self):
         self.conn.close()
+
+class DatabaseManagerForTest(DatabaseManager):
+    def __init__(self, conn):
+        self.conn = conn
+        self.conn.isolation_level = None  # Para ativar o autocommit no SQLite
+        self.cursor = self.conn.cursor()
