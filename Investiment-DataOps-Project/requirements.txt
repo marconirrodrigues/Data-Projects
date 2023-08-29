@@ -1,5 +1,6 @@
-flask==2.0.1
 pandas==1.5.2
-psycopg2-binary==2.9.6
-yfinance==0.2.3
+psycopg2_binary==2.9.6
 pytest==7.4.0
+python-dotenv==1.0.0
+Requests==2.31.0
+yfinance==0.2.3
