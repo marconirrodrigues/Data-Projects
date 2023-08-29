@@ -27,15 +27,13 @@ class TestNewsAPI(unittest.TestCase):
         news_api = NewsAPI(newsapi_key)
 
         # Chama o método get_news e verifica a resposta
-        response = news_api.get_news('bitcoin', 30)
+        response = news_api.get_news('apple', 30)
 
         # Verifica se a resposta tem o status 'ok'
         self.assertEqual(response['status'], 'ok')
 
         # Verifica se a quantidade de resultados é a esperada
         self.assertEqual(response['totalResults'], 2)
-
-        # Adicione mais assertivas de acordo com o que você quer testar
 
 
 if __name__ == '__main__':
