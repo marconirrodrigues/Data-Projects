@@ -1,0 +1,30 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ develop ]  # Isso executa a ação toda vez que um push é feito para a branch main
+  pull_request:
+    branches: [ develop ]  # Também executa para pull requests direcionados para a branch main
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest  # A máquina virtual que executará os testes
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8  # Versão do Python
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        python -m unittest discover tests
