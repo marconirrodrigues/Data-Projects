@@ -25,8 +25,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r Investiment-DataOps-Project/requirements.txt
 
-    - name: Run tests
-      working-directory: ../src
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=$PWD/src:$PYTHONPATH" >> $GITHUB_ENV
 
+    - name: Run tests
       run: |
         python -m unittest discover ../tests
