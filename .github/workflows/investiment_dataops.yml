@@ -2,9 +2,9 @@ name: Python CI
 
 on:
   push:
-    branches: [ develop ]  # Isso executa a ação toda vez que um push é feito para a branch main
+    branches: [ develop ]  # Isso executa a ação toda vez que um push é feito para a branch develop
   pull_request:
-    branches: [ develop ]  # Também executa para pull requests direcionados para a branch main
+    branches: [ develop ]  # Também executa para pull requests direcionados para a branch develop
 
 jobs:
   test:
