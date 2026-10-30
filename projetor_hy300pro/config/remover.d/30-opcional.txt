@@ -1,0 +1,24 @@
+# OPCIONAL: só entra se você pedir (LISTAS="malware bloat opcional").
+# São funções que algumas pessoas usam. As fontes discordam; decida pelo seu uso.
+
+# Espelhamento de tela (AirPlay / DLNA / Miracast). [P] mantém, [B] desativa.
+com.mphotool.airplay
+com.mphotool.dlna
+com.mphotool.usbcastserver
+com.softwinner.miracastReceiver
+
+# Helpers de acessibilidade forçados para Netflix/YouTube. [B] remove, [X] mantém o nfx se usar Netflix.
+com.android.nfx
+com.android.ytb
+
+# Módulos AOSP de recomendação/anúncios: revise antes [T]
+com.google.android.tvrecommendations
+com.android.adservices.api
+com.android.ondevicepersonalization.services
+
+# Uso raro
+com.android.mtp
+com.android.managedprovisioning
+com.android.companiondevicemanager
+com.android.sharedstoragebackup
+com.allwinnertech.packageoverride

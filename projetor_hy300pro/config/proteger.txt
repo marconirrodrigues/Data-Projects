@@ -1,0 +1,37 @@
+# NUNCA remover/desativar: controlam o hardware do projetor ou o núcleo do sistema.
+# O 04_debloat.sh ignora qualquer pacote desta lista (e também os de apps.conf).
+# Fontes: probonopd/hy310-deshittify [P], battleof3/magcubic-h726-cleanup [B],
+#         maximilian-sh/hy350max-badbox-removal [H]. Ver docs/PESQUISA.md.
+
+# --- Imagem / óptica ---
+com.hysd.vafocus                    # autofoco [P][B]
+com.htc.magcubicos                  # MagcubicOS: keystone (CorrectionActivity), modo de projeção, ângulo inicial e ajustes [P][B][H]
+com.android.tv.settings             # Configurações (inclui telas de Foco e Imagem do fabricante) [B]
+
+# --- Segurança térmica ---
+com.htc.closedialog                 # tela de erro da ventoinha/superaquecimento e desligamento de segurança [P][B]
+
+# --- HDMI / fontes de entrada ---
+com.softwinner.awsource             # seleção de fonte de entrada [P][B]
+com.softwinner.awlivetv             # entrada HDMI (.MainActivity) [P][B][M]
+com.softwinner.TvdVideo             # vídeo da entrada [P]
+com.softwinner.vis                  # [B]
+com.softwinner.awmanager            # gerenciador de sistema Allwinner [B]
+
+# --- Controle remoto ---
+com.htc.htcbluetoothremotecontrol   # serviço do controle remoto [P][B]
+
+# --- Sistema Android ---
+com.android.vending                 # não mexer pelo nome: ver docs/PESQUISA.md (APK falso "Tubesky" no H726) [H]
+com.android.providers.media
+com.android.providers.downloads
+com.android.providers.settings
+com.android.providers.tv
+com.android.webview
+com.google.android.webview
+com.android.inputmethod.latin
+com.android.vpndialogs              # mantenha se usar VPN [X]
+com.android.systemui
+com.android.shell
+com.android.networkstack
+android

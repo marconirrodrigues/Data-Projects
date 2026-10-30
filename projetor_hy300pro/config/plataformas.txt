@@ -1,0 +1,10 @@
+# Identificadores de plataforma validados (comparados sem diferenciar maiúsculas, por trecho,
+# com ro.board.platform, ro.hardware, ro.build.flavor e /proc/device-tree/compatible).
+# As listas de pacotes vieram de unidades Allwinner H713 e H726. O HY300 "comum" com
+# Rockchip RK3326 é outro aparelho: não use estas listas nele.
+h713
+sun50iw12
+tuna
+h726
+sun50iw15
+hermes

@@ -1,0 +1,35 @@
+# Bloat considerado seguro (relatado por [P], [B] e/ou [X]).
+# Comece com MODO=desativar (padrão), reinicie e teste antes de usar MODO=remover.
+
+com.htc.clearmemory
+com.mobisystems.office
+com.softwinner.tv.factorymenu
+org.chromium.webview_shell          # só o app de teste; o WebView em si fica
+com.android.gallery3d
+com.android.music
+com.android.musicfx
+com.hisilicon.explorer
+com.android.egg
+com.android.dreams.basic
+com.android.bips
+com.android.printspooler
+com.android.printservice.recommendation
+com.android.bluetoothmidiservice
+com.android.dynsystem
+com.android.htmlviewer
+com.android.soundpicker
+com.android.wallpaperbackup
+com.android.wallpapercropper
+com.android.cellbroadcastreceiver
+com.android.cellbroadcastservice
+com.android.cts.ctsshim
+com.android.cts.priv.ctsshim
+com.google.android.katniss
+com.softwinner.screenshot
+com.softwinner.theme.color
+com.softwinner.theme.icon
+com.softwinner.awlogsettings
+com.android.onetimeinitializer
+com.android.nfc                     # não há hardware NFC [P]
+android.rockchip.update.service :desativar # atualizador Rockchip em placa Allwinner [P]
+com.htc.htcsetup_wizard_d55     :desativar # só depois de concluir a configuração inicial [B]

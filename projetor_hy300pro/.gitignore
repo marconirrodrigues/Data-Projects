@@ -1,0 +1,7 @@
+# Backups e dumps do aparelho podem conter dados pessoais e binários grandes
+backups/*
+!backups/.gitkeep
+apks/*
+!apks/.gitkeep
+!apks/LEIA-ME.md
+*.img
