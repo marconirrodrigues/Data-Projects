@@ -57,3 +57,12 @@ checar_plataforma() {
   fi
   ok "Placa validada: $ident"
 }
+
+# Impede qualquer alteração sem um backup deste mesmo aparelho/firmware (feito pelo 01_backup.sh).
+exigir_backup() {
+  local fp ultimo
+  fp="$(sh_adb getprop ro.build.fingerprint)"
+  ultimo="$(grep -lxF "$fp" "$BACKUPS"/*-backup/fingerprint.txt 2>/dev/null | sort | tail -1 || true)"
+  [[ -n "$ultimo" ]] || erro "Nenhum backup deste aparelho/firmware. Rode antes: ./scripts/01_backup.sh ${HY300_IP}"
+  ok "Backup encontrado: $(dirname "$ultimo")"
+}

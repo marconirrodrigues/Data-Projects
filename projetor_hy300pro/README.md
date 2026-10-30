@@ -27,22 +27,24 @@ Tudo é feito via **ADB, sem root e de forma reversível**: os pacotes são desa
 
 Todos os scripts aceitam o IP do projetor como 1º argumento (ou `HY300_IP=...`). Sem IP, usam o USB.
 
+> 🔒 **Backup obrigatório:** os passos 2, 3 e 4 se recusam a rodar se não houver um backup do `01_backup.sh` feito neste aparelho com este firmware. Cada alteração também gera um arquivo para desfazer (`backups/*-debloat.log` e `backups/*-desfazer-otimizar.txt`).
+
 | # | Script | O que faz | Altera algo? |
 |---|---|---|---|
 | 0 | `00_identificar.sh` | Placa, firmware, RAM e lista de pacotes em `backups/` | Não |
-| 1 | `01_backup.sh` | Lista de pacotes, configurações e APKs instalados | Não |
+| 1 | `01_backup.sh` | **Obrigatório.** Pacotes, configurações, launcher atual e APKs instalados | Não |
 | 2 | `02_instalar_apps.sh` | Instala os APKs que você colocou em `apks/` | Sim |
-| 3 | `03_otimizar.sh` | Animações 0.5x, launcher padrão, DNS privado opcional, limpeza de cache | Sim (reversível) |
+| 3 | `03_otimizar.sh` | Animações 0.5x, launcher padrão, DNS privado opcional, limpeza de cache | Sim (gera arquivo para desfazer) |
 | 4 | `04_debloat.sh` | Desativa malware e bloat das listas em `config/remover.d/` | Sim (reversível) |
-| ↩ | `99_restaurar.sh` | Reativa pacotes a partir do log do debloat | Desfaz o passo 4 |
+| ↩ | `99_restaurar.sh` | Reativa pacotes (`LOG=`) ou volta as configurações (`DESFAZER=`) | Desfaz os passos 3 e 4 |
 
 Exemplo completo:
 
 ```bash
 ./scripts/00_identificar.sh 192.168.0.50
 ./scripts/01_backup.sh 192.168.0.50
-./scripts/02_instalar_apps.sh 192.168.0.50              # Projectivy + seus apps
-LAUNCHER=com.spocky.projengmenu DNS_PRIVADO=dns.adguard-dns.com \
+./scripts/02_instalar_apps.sh 192.168.0.50              # Cinema, Projectivy e seus apps
+LAUNCHER=com.marconirodrigues.cinema DNS_PRIVADO=dns.adguard-dns.com \
   ./scripts/03_otimizar.sh 192.168.0.50
 ./scripts/04_debloat.sh 192.168.0.50                    # simulação: só mostra o que faria
 APLICAR=1 ./scripts/04_debloat.sh 192.168.0.50          # aplica (pm disable-user)
@@ -50,6 +52,7 @@ APLICAR=1 ./scripts/04_debloat.sh 192.168.0.50          # aplica (pm disable-use
 
 # Se algo quebrar:
 LOG=backups/AAAAMMDD-HHMMSS-debloat.log ./scripts/99_restaurar.sh 192.168.0.50
+DESFAZER=backups/AAAAMMDD-HHMMSS-desfazer-otimizar.txt ./scripts/99_restaurar.sh 192.168.0.50
 ```
 
 Opções do debloat:
@@ -69,11 +72,15 @@ Opções do debloat:
 | `config/remover.d/30-opcional.txt` | Só entra se você pedir |
 | `config/plataformas.txt` | Placas onde as listas foram validadas |
 
-## 5. Launcher (interface)
+## 5. Interface: launcher Cinema
 
-Recomendado: **Projectivy Launcher** (`com.spocky.projengmenu`), feito para projetores e usado pelos outros projetos de debloat. No H726 baixe a variante `armeabi-v7a` (o sistema é 32 bits) e confira a assinatura (`CN=Despesse Mickael`).
+![Prévia do launcher Cinema](docs/img/cinema-launcher-preview.png)
 
-Instale o novo launcher **antes** do debloat: em unidades H713 o launcher original (`com.htc.htclauncherhighenglishd08`) é malicioso e será desativado. O `com.htc.magcubicos` (keystone/projeção) continua instalado; a entrada HDMI pode ser aberta pelo atalho do `com.softwinner.awlivetv`.
+Launcher próprio deste repositório (pasta [`launcher/`](launcher/README.md)), no estilo Android TV com acabamento macOS: destaque grande do app em foco, dock de vidro com zoom e atalhos para HDMI, imagem (keystone), foco e ajustes. É leve, feito para 1 GB de RAM.
+
+O **Projectivy Launcher** (`com.spocky.projengmenu`) fica instalado como **reserva**: se algo der errado com o Cinema, o projetor continua tendo uma tela inicial.
+
+Instale os launchers **antes** do debloat: no H713 o launcher original (`com.htc.htclauncherhighenglishd08`) é malicioso e será desativado. O `com.htc.magcubicos` (keystone/projeção) continua instalado.
 
 ## 6. Roteiro
 

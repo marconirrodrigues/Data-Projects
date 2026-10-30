@@ -9,6 +9,7 @@
 source "$(dirname "$0")/lib.sh"
 conectar
 checar_plataforma
+exigir_backup
 
 APLICAR="${APLICAR:-0}"
 MODO="${MODO:-desativar}"

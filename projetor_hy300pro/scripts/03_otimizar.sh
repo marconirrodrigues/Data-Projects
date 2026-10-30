@@ -3,6 +3,15 @@
 #   DNS_PRIVADO=dns.adguard-dns.com ./scripts/03_otimizar.sh 192.168.0.50
 source "$(dirname "$0")/lib.sh"
 conectar
+exigir_backup
+
+# Guarda os valores atuais para o 99_restaurar.sh poder desfazer (DESFAZER=arquivo)
+DESFAZER="$BACKUPS/$(date +%Y%m%d-%H%M%S)-desfazer-otimizar.txt"
+guardar() { echo "settings put global $1 $(sh_adb settings get global "$1")" >> "$DESFAZER"; }
+for k in window_animation_scale transition_animation_scale animator_duration_scale \
+         private_dns_mode private_dns_specifier; do guardar "$k"; done
+echo "cmd package set-home-activity $(sh_adb cmd package resolve-activity --brief \
+  -a android.intent.action.MAIN -c android.intent.category.HOME | tail -1)" >> "$DESFAZER"
 
 # Animações mais curtas deixam a navegação no controle mais rápida (1.0 = padrão)
 ESCALA="${ESCALA_ANIMACAO:-0.5}"
@@ -29,3 +38,4 @@ fi
 sh_adb pm trim-caches 999G >/dev/null 2>&1 || true
 sh_adb cmd package bg-dexopt-job >/dev/null 2>&1 || true
 ok "Cache limpo e otimização de apps disparada"
+ok "Para desfazer: DESFAZER=$DESFAZER ./scripts/99_restaurar.sh ${HY300_IP}"

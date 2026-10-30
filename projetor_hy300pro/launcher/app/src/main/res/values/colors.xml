@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#FF0A0C11</color>
+    <color name="text">#FFF5F5F7</color>
+    <color name="text_dim">#B3F5F5F7</color>
+    <color name="text_faint">#73F5F5F7</color>
+    <color name="glass_fill">#1FFFFFFF</color>
+    <color name="glass_stroke">#33FFFFFF</color>
+    <color name="tile">#26FFFFFF</color>
+    <color name="focus_ring">#E6FFFFFF</color>
+    <color name="shortcut_hdmi">#FF5E8BFF</color>
+    <color name="shortcut_image">#FF34C3A0</color>
+    <color name="shortcut_focus">#FFFFB340</color>
+    <color name="shortcut_settings">#FF8E8E93</color>
+    <color name="shortcut_apps">#FFBF5AF2</color>
+</resources>

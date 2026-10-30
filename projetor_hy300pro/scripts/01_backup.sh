@@ -6,6 +6,10 @@ conectar
 DEST="$BACKUPS/$(date +%Y%m%d-%H%M%S)-backup"
 mkdir -p "$DEST/apks"
 
+sh_adb getprop ro.build.fingerprint > "$DEST/fingerprint.txt"
+sh_adb getprop > "$DEST/getprop.txt"
+sh_adb cmd package resolve-activity --brief -a android.intent.action.MAIN \
+  -c android.intent.category.HOME | tail -1 > "$DEST/launcher_padrao.txt"
 sh_adb pm list packages -f | sort > "$DEST/pacotes.txt"
 sh_adb pm list packages -d | sort > "$DEST/desativados.txt"
 for ns in system secure global; do
@@ -21,3 +25,4 @@ for pkg in $(sh_adb pm list packages -3 | sed 's/^package://'); do
 done
 
 ok "Backup salvo em $DEST"
+info "Guarde esta pasta: ela permite voltar o projetor ao estado de hoje."

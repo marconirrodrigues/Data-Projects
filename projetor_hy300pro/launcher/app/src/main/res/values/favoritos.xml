@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Apps do dock, na ordem em que aparecem. Só os instalados são mostrados.
+      Formato: pacote|cor de destaque|subtítulo
+    -->
+    <string-array name="favoritos">
+        <item>com.netflix.ninja|#E50914|Séries, filmes e documentários</item>
+        <item>com.google.android.youtube.tv|#FF0033|Vídeos, música e canais</item>
+        <item>com.teamsmart.videomanager.tv|#FF3D3D|YouTube sem anúncios</item>
+        <item>com.amazon.amazonvideo.livingroom|#1A98FF|Filmes, séries e esportes</item>
+        <item>com.globo.globotv|#FF4E50|Novelas, jornalismo e TV ao vivo</item>
+        <item>org.videolan.vlc|#FF8800|Vídeos do pendrive e da rede</item>
+    </string-array>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cinema</string>
+    <string name="hint_open">OK para abrir</string>
+    <string name="all_apps">Todos os apps</string>
+    <string name="all_apps_sub">Tudo o que está instalado no projetor</string>
+    <string name="hdmi">HDMI</string>
+    <string name="hdmi_sub">Videogame, notebook ou TV box</string>
+    <string name="image">Imagem</string>
+    <string name="image_sub">Correção de trapézio e ajuste da projeção</string>
+    <string name="focus">Foco</string>
+    <string name="focus_sub">Ajuste do foco da lente</string>
+    <string name="settings">Ajustes</string>
+    <string name="settings_sub">Wi-Fi, Bluetooth, som e sistema</string>
+    <string name="app_sub_default">Pressione OK para abrir</string>
+    <string name="open_failed">Não foi possível abrir %1$s</string>
+    <string name="wifi_off">Sem rede</string>
+</resources>
